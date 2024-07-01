@@ -1,6 +1,4 @@
-{
-  :simlayers {
-             :f-mode {:key :f}    ; delimeters    ( ) [ ] { } and other symbols ~ $ &
+{:simlayers {:f-mode {:key :f}    ; delimeters    ( ) [ ] { } and other symbols ~ $ &
              :d-mode {:key :d}    ; arithmetic    + - * / = % < > #
              :s-mode {:key :s}    ; punctuation   ? ! : ; ' " ` ~
              :a-mode {:key :a}    ; navigation hjkl + tab + enter + page down/up
@@ -17,202 +15,17 @@
              :x-mode {:key :x}    ; Some multi-character shortcuts like <= (not implemented)
              }
 
- :devices {
-           :amk [{:vendor_id 76, :product_id 615 }] ;; Apple Magic Keyboard
-           :a2k [{:vendor_id 10730, :product_id 258 }] ;; Advantage2 Kinesis 
-           :dot [{:vendor_id 1046, :product_id 291 }] ;; Ducky One Two SF 
+ :devices {:amk [{:vendor_id 76, :product_id 615}] ;; Apple Magic Keyboard
+           :a2k [{:vendor_id 10730, :product_id 258}] ;; Advantage2 Kinesis 
+           :dot [{:vendor_id 1046, :product_id 291}] ;; Ducky One Two SF 
            }
 
- :main [
-
-        ; {:des "change macos desktops (1-5)"
-           ;      :rules [
-                          ;                 [:f1  :!OC1]
-                          ;                 [:f2  :!OC2]
-                          ;                 [:f3  :!OC3]
-                          ;                 [:f4  :!OC4]
-                          ;                 [:f5  :!OC5]
-                          ;                 [:f6  :!OC6]
-                         ;                 [:f7  :!OC7]
-                          ;                 [:f8  :!OC8]
-                          ;                 [:f9  :!OC9]
-                          ;                 [:f10  :!OC8]
-                          ;             ]
-           ; }
-
-        {:des "Run Telescoper in Neovim shortcut"
-         :rules [:a2k
-                 [:home [:spacebar :p :f]]
-                 ]
-         }
-
-        {:des "switch right_alt -> right_command"
-         :rules [:dot
-                 [:caps_lock :right_control]
-                 [:right_control  :right_command]
-                 [:delete_forward :!Tb]
-                 [:page_down :!Cgrave_accent_and_tilde]
-                 [:page_up :!CSc]
-                 [:backslash [:spacebar :p :f]]
-                 ]
-         }
-
-        {:des "Page Down => double Space (all files save, neovim)"
-         :rules [:a2k
-                 [:page_down [:spacebar :spacebar]]
-                 ]
-         }
-
-        ; {:des "Open Tab Stash shortcut (shift + ctrl + s)"
-        ;  :rules [:a2k
-        ;          [:left_arrow :!STs]
-        ;          ]
-        ;  }
-
-        ; {:des "Open Tab Stash shortcut (shift + ctrl + s)"
-        ;  :rules [:amk
-        ;          [:eject :!STs]
-        ;          ]
-        ;  }
-
-        {:des "Use Telescope in Neovim"
-         :rules [:amk
-                 ; [:eject [:spacebar :p :f]]
-                 [:eject :!Tb]
-                 [:right_option [:spacebar :p :f]]
-                 ]
-         }
-
-        {:des "Non Us Backslash to CMD + SHIFT + C (Firefox developer tools inspect)"
-         :rules [:a2k
-                 [:non_us_backslash :!CSc]
-                 ]
-         }
-
-        ; {:des "right, left arrow to right, left button click"
-        ;  :rules [
-        ;          [:left_arrow :button1]
-        ;          [:right_arrow :button2]
-        ;          ]
-        ;  }
-
-        ; {:des "switch left and right mouse button"
-        ;  :rules [
-        ;          [:button1 :button2]
-        ;          [:button2 :button1]
-        ;          ]
-        ;  }
-
-        {:des "Tada68 specific mappings for apple magic keyboard"
-         :rules [:amk
-                 [:fn :!CSc]
-                 ]
-         }
-
-        ; {:des "Tada68 specific mappings for apple magic keyboard"
-           ;  :rules [:a2k
-                      ;          [:left_arrow :!TStab]
-                      ;          [:right_arrow :escape]
-                      ;          ]
-           ;  }
-
-        ; {:des "Tada68 specific mappings for apple magic keyboard"
-        ;  :rules [:amk
-        ;          [:right_option :!Tb]
-        ;          ]
-        ;  }
+ :main [; modifications: 
 
         {:des "right option to CTRL + b (tmux)"
-         :rules [:a2k
-                 [:right_option :!Tb]
-                 ]
-         }
+         :rules [[:right_option :!Tb]]}
 
-        ; {:des "f1 - f5 to ctrl + b + {1..5}} (cycle apps - rcmd app)"
-        ; :rules [
-        ;         [:f1 [:!Qs ]]
-        ;         [:f2 [:!Qd]]
-        ;         ; [:f4 [:!Tb :4]]
-        ;         ; [:f3 [:!Tb :3]]
-        ;         ]
-        ; }
-
-        ; {:des "f1 - f6 change tmux sessions"
-        ; :rules [
-        ;         [:f10 [:!Tb :s :0]] ; session - config
-        ;         [:f1 [:!Tb :s :1]]
-        ;         [:f2 [:!Tb :s :2]]
-        ;         [:f3 [:!Tb :s :3]]
-        ;         [:f4 [:!Tb :s :4]]
-        ;         [:f5 [:!Tb :s :5]]
-        ;         [:f6 [:!Tb :s :6]]
-        ;         ; [:f2 [:!Qd]]
-        ;         ; [:f4 [:!Tb :4]]
-        ;         ; [:f3 [:!Tb :3]]
-        ;         ]
-        ; }
-
-        ; {:des "f9 to ctrl + b + s (tmux view sessions)"
-        ;  :rules [
-        ;          [:f9 [:!Tb :s]]
-        ;          ]
-        ;  }
-
-
-        {:des "cycle same app windows (` => cmd + `)"
-         :rules [:a2k
-                 [:equal_sign  :!Cgrave_accent_and_tilde]
-                 ]
-         }
-
-        {:des "cycle same app windows (` => cmd + `)"
-         :rules [:amk
-                 [:grave_accent_and_tilde  :!Cgrave_accent_and_tilde]
-                 ]
-         }
-
-        {:des "End to spacebar, Delete to Ctrl + B"
-         :rules [:a2k
-                 [:end :spacebar]
-                 [:delete_forward :!Tb]
-                 ]
-         }
-
-        {:des "Page Up to toggle Alfred"
-         :rules [:a2k
-                 [:page_up :!Ospacebar]
-                 ]
-         }
-
-        {:des "x-mode for jumping between desktops"
-         :rules [:x-mode
-                 ; [:##r :!WO5]
-                 ; [:##f :!WO6]
-                 [:##j :!OC1]
-                 [:##k :!OC2]
-                 [:##l :!OC3]
-                 [:##m :!OC4]
-                 [:##comma :!OC5]
-                 ; [:##y :!OC4]
-                 ; [:##u :!OC5]
-                 ; [:##i :!OC6]
-                 ; [:##o :!OC7]
-                 ; [:##h :!OC8]
-                 ; [:##j :!OC9]
-                 ; [:##k :!OC0]
-                 ; [:##l :!WO1]
-                 ; [:##n :!WO2]
-                 ; [:##m :!WO3]
-                 ; [:##comma :!WO4]
-                 ; [:##period :!WO5]
-                 ]
-         }
-
-        {:des "g-mode for something"
-         :rules [:g-mode
-                 [:##y [:b :u :b :b :l :e :!Sf :i :s :h :6 :1 :2 :6]]
-                 ]
-         }
+        ; layers: 
 
         {:des "f-mode for delimeters and ! ? $"
          :rules [:f-mode
@@ -224,9 +37,7 @@
                  [:##comma :close_bracket]
                  [:##o :!S1]
                  [:##l :!Sslash]
-                 [:##period :!S4]
-                 ]
-         }
+                 [:##period :!S4]]}
 
         {:des "d-mode for arithmetic"    ;;    < > #    + - =    * / %
          :rules [:d-mode
@@ -241,8 +52,7 @@
                  [:##m :!S8]                       ; d -> m        *
                  [:##comma   :!S3]                 ; d -> ,        #
                  [:##period :!S5]                  ; d -> .        %
-                 ]
-         }
+                 ]}
 
         {:des "s-mode for punctuation"   ;;    ' " `    , . &    ; : ~
          :rules [:s-mode
@@ -251,12 +61,10 @@
                  [:##o :grave_accent_and_tilde]
                  [:##j :comma]
                  [:##k :period]
-                 [:##comma :!S7] 
+                 [:##comma :!S7]
                  [:##m :semicolon]
                  [:##l :!Ssemicolon]
-                 [:##period :!Sgrave_accent_and_tilde]
-                 ]
-         }
+                 [:##period :!Sgrave_accent_and_tilde]]}
 
         {:des "a- mode for navigation h j k l"
          :rules [:a-mode
@@ -269,10 +77,7 @@
                  [:##u :tab]
                  [:##i :tab]
                  [:comma :page_down]
-                 [:period :page_up]]
-         }
-
-
+                 [:period :page_up]]}
 
         {:des "r-mode for deleting characters with ui, words with jk and lines with hl"
          :rules [:r-mode
@@ -282,8 +87,7 @@
                  [:##k :!Odelete_forward]      ; r -> k   Delete word forwards
                  [:##h :!Cdelete_or_backspace] ; r -> h   Delete to beginning of line
                  [:##l :!Cdelete_forward]      ; r -> l   Delete to end of line
-                 ]
-         }
+                 ]}
 
         {:des "e-mode allows for easy back and forth one character, word or line"
          :rules [:e-mode
@@ -295,8 +99,7 @@
                  [:##l         :!Cright_arrow]       ; e -> l    Cmd+Right
                  [:n           :return_or_enter]     ; e -> n    Enter
                  [:m           :return_or_enter]     ; e -> m    Enter
-                 ]
-         }
+                 ]}
 
         {:des "w-mode = e-mode + SHIFT (i.e. selection, not just movement)"
          :rules [:w-mode
@@ -306,40 +109,16 @@
                  [:##k         :!SOright_arrow]       ; e -> k    Shift+Opt+Right
                  [:##h         :!SCleft_arrow]        ; e -> h    Shift+Cmd+Left
                  [:##l         :!SCright_arrow]       ; e -> l    Shift+Cmd+Right
-                 ]
-         }
+                 ]}
 
         {:des "q-mode for general shortcuts like browser tab navigation"
          :rules [:q-mode
                  [:##j :!CSopen_bracket]  ; q -> j    tab to the left:  Cmd-{
-                                                                             [:##k :!CSclose_bracket] ; q -> k    tab to the right: Cmd-}
-                 [:##l :!TCf           ]  ; q -> l    toggle full screen: ^⌘F
+                 [:##k :!CSclose_bracket] ; q -> k    tab to the right: Cmd-}
+                 [:##l :!TCf]  ; q -> l    toggle full screen: ^⌘F
                  [:##u :!Cclose_bracket]  ; q -> u    browser back:     Cmd-[
-                                                                             [:##i :!Cclose_bracket]  ; q -> i    browser forward:  Cmd-]
-                 [:##o :f2             ]  ; q -> o    F2 (useful in Excel)
-                 [:##p :f4             ]  ; q -> p    F4 (useful in Excel)
-                 ]
-         }
-
-        ; {:des "v-mode for number pad"
-           ;  :rules [:v-mode
-                      ;          [:u :7]
-                      ;          [:i :8]
-                      ;          [:o :9]
-                      ;          [:j :4]
-                      ;          [:k :5]
-                      ;          [:l :6]
-                      ;          [:m :1]
-                      ;          [:comma :2]
-                      ;          [:period :3]
-                      ;          [:p :!Sequal_sign]
-                      ;          [:semicolon :hyphen]
-                      ;          [:slash :return_or_enter]
-                      ;          [:y :delete_or_backspace]
-                      ;          [:h :period]
-                      ;          [:n :0]
-                      ;         ]
-           ; }
+                 [:##i :!Cclose_bracket]  ; q -> i    browser forward:  Cmd-]
+                 ]}
 
         {:des "v-mode for window management with Spectacle"
          :rules [:v-mode
@@ -348,9 +127,7 @@
                  [:##j :!OCc]
                  [:##k :!OCf]
                  [:##i :!OCz]
-                 [:##n :return_or_enter]
-                 ]
-         }
+                 [:##n :return_or_enter]]}
 
         {:des "c-mode for remaining symbols ^ | \\ _ @"
          :rules [:c-mode
@@ -358,7 +135,4 @@
                  [:##j :!Sbackslash]
                  [:##k :!S2]
                  [:##m :backslash]
-                 [:##comma :!Shyphen]
-                 ]
-         }]
-}
+                 [:##comma :!Shyphen]]}]}
